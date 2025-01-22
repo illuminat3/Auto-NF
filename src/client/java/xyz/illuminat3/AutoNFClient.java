@@ -1,32 +1,54 @@
 package xyz.illuminat3;
 
 import net.fabricmc.api.ClientModInitializer;
-import net.fabricmc.fabric.api.client.message.v1.ClientReceiveMessageEvents;
+import net.minecraft.client.MinecraftClient;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 public class AutoNFClient implements ClientModInitializer {
+
+	private static final Logger LOGGER = LogManager.getLogger();
+
 	@Override
 	public void onInitializeClient() {
-		ClientReceiveMessageEvents.ALLOW_CHAT.register((message, signedMessage, sender, params, receptionTimestamp) -> {
-			String messageContent = message.getString();
-
-			if (messageContent.contains("FISHING ▶")) {
-				if (messageContent.contains("Mythical")) {
-					sendChatMessage("gg");
-				} else if (messageContent.contains("Platinum")) {
-					sendChatMessage("nf");
-				}
-			}
-			return true;
-		});
+		LOGGER.info("AutoNFClient initialized.");
 	}
 
-	// FISHING ▶ Mythical
-	// FISHING ▶ Platinum
+	public static void handleChatMessage(String message) {
+/*		String username = getUsername();
 
-	private void sendChatMessage(String message) {
-		var client = net.minecraft.client.MinecraftClient.getInstance();
+		if (username == null) {
+			LOGGER.warn("Player username is not available. Skipping username check.");
+		} else {
+			if (message.contains(username)) {
+				LOGGER.info("Message contains username. Exiting handleChatMessage.");
+				return;
+			}
+		}*/
+
+        LOGGER.info("Received message: {}", message);
+		if (message.contains("FISHING ▶")) {
+			LOGGER.info("Fishing Message Detected!");
+			if (message.contains("Mythical")) {
+				sendChatMessage("gg");
+			} else if (message.contains("Platinum")) {
+				sendChatMessage("nf");
+			}
+		}
+	}
+
+	private static void sendChatMessage(String message) {
+		MinecraftClient client = MinecraftClient.getInstance();
 		if (client.player != null) {
 			client.player.networkHandler.sendChatMessage(message);
 		}
+	}
+
+	private static String getUsername() {
+		MinecraftClient client = MinecraftClient.getInstance();
+		if (client.player != null) {
+			return client.player.getName().getString();
+		}
+		return null;
 	}
 }

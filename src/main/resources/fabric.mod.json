@@ -15,13 +15,13 @@
 	"icon": "assets/autonf/icon.png",
 	"environment": "*",
 	"entrypoints": {
-		"main": [
-			"xyz.illuminat3.AutoNF"
-		],
 		"client": [
 			"xyz.illuminat3.AutoNFClient"
 		]
 	},
+	"mixins": [
+		"autonfclient.mixins.json"
+	],
 	"depends": {
 		"fabricloader": ">=0.16.5",
 		"minecraft": "~1.21",

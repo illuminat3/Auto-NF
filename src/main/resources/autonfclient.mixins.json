@@ -1,0 +1,12 @@
+{
+  "required": true,
+  "package": "xyz.illuminat3.mixin",
+  "refmap": "autonfclient.refmap.json",
+  "mixins": [
+    "ChatMessageMixin"
+  ],
+  "client": [
+    "ChatMessageMixin"
+  ],
+  "server": []
+}
