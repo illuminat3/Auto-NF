@@ -3,13 +3,13 @@
 	"id": "autonf",
 	"version": "${version}",
 	"name": "AutoNF",
-	"description": "This is an example description! Tell everyone what your mod is about!",
+	"description": "Automatically say NF and GG for cosmosmc",
 	"authors": [
-		"Me!"
+		"illuminat3"
 	],
 	"contact": {
-		"homepage": "https://fabricmc.net/",
-		"sources": "https://github.com/FabricMC/fabric-example-mod"
+		"homepage": "https://github.com/illuminat3/Auto-NF",
+		"sources": "https://github.com/illuminat3/Auto-NF"
 	},
 	"license": "CC0-1.0",
 	"icon": "assets/autonf/icon.png",
@@ -22,20 +22,10 @@
 			"xyz.illuminat3.AutoNFClient"
 		]
 	},
-	"mixins": [
-		"autonf.mixins.json",
-		{
-			"config": "autonf.client.mixins.json",
-			"environment": "client"
-		}
-	],
 	"depends": {
-		"fabricloader": ">=0.16.10",
+		"fabricloader": ">=0.16.5",
 		"minecraft": "~1.21",
 		"java": ">=21",
 		"fabric-api": "*"
-	},
-	"suggests": {
-		"another-mod": "*"
 	}
 }
