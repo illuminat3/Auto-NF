@@ -15,19 +15,20 @@ public class AutoNFClient implements ClientModInitializer {
 	}
 
 	public static void handleChatMessage(String message) {
-		String username = getUsername();
-
-		if (username == null) {
-			LOGGER.warn("Player username is not available. Skipping username check.");
-		} else {
-			if (message.contains(username)) {
-				LOGGER.info("Message contains username. Exiting handleChatMessage.");
-				return;
-			}
-		}
 
         LOGGER.info("Received message: {}", message);
 		if (message.contains("FISHING ▶")) {
+			String username = getUsername();
+
+			if (username == null) {
+				LOGGER.warn("Player username is not available. Skipping username check.");
+			} else {
+				if (message.contains(username)) {
+					LOGGER.info("Message contains username. Exiting handleChatMessage.");
+					return;
+				}
+			}
+
 			LOGGER.info("Fishing Message Detected!");
 			if (message.contains("Mythical")) {
 				sendChatMessage("gg");
