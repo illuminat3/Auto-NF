@@ -15,7 +15,7 @@ public class AutoNFClient implements ClientModInitializer {
 	}
 
 	public static void handleChatMessage(String message) {
-/*		String username = getUsername();
+		String username = getUsername();
 
 		if (username == null) {
 			LOGGER.warn("Player username is not available. Skipping username check.");
@@ -24,7 +24,7 @@ public class AutoNFClient implements ClientModInitializer {
 				LOGGER.info("Message contains username. Exiting handleChatMessage.");
 				return;
 			}
-		}*/
+		}
 
         LOGGER.info("Received message: {}", message);
 		if (message.contains("FISHING ▶")) {
